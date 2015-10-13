@@ -1,0 +1,11 @@
+---
+- name: Ubuntu install
+  when: ansible_distribution == 'Ubuntu'
+  include: Ubuntu.yml
+
+- name: CentOS/Fedora install
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Fedora'
+  include: CentOSFedora.yml
+  
+- name: install julia-mode
+  copy: src=50julia-mode.el dest={{ emacs_site_d }}

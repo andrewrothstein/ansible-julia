@@ -1,0 +1,16 @@
+---
+- name: (Fedora) add julia yum repo
+  when: ansible_distribution == "Fedora"
+  get_url: >
+    url='http://copr.fedoraproject.org/coprs/nalimilan/julia/repo/fedora-{{ansible_distribution_major_version|int}}/nalimilan-julia-fedora-{{ansible_distribution_major_version|int}}.repo'
+    dest='/etc/yum.repos.d'
+
+- name: (CentOS) add julia yum repo
+  when: ansible_distribution == "CentOS"
+  get_url: >
+    url='http://copr.fedoraproject.org/coprs/nalimilan/julia/repo/epel-{{epel_ver}}/nalimilan-julia-epel-{{epel_ver}}.repo'
+    dest='/etc/yum.repos.d'
+
+- name: install julia
+  yum: name=julia state=latest
+  
