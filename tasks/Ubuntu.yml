@@ -1,10 +1,15 @@
 ---
-- name: (Ubuntu) add staticfloat/julia* ppas
+- name: dependent packages
+  apt: name={{item}} state=latest
+  with_items:
+    - python-apt
+
+- name: add staticfloat/julia* ppas
   apt_repository: repo={{ item }}
   with_items:
     - ppa:staticfloat/juliareleases
     - ppa:staticfloat/julia-deps
   
-- name: (Ubuntu) install julia
+- name: install julia
   apt: name=julia state=latest
 
