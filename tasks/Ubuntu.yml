@@ -3,6 +3,7 @@
   apt: name={{item}} state=latest
   with_items:
     - python-apt
+    - curl
 
 - name: add staticfloat/julia* ppas
   apt_repository: repo={{ item }}

@@ -1,4 +1,9 @@
 ---
+- name: dependent packages
+  yum: name={{item}} state=latest
+  with_items:
+    - curl
+
 - name: (Fedora) add julia yum repo
   when: ansible_distribution == "Fedora"
   get_url: >
