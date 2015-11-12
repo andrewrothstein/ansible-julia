@@ -1,8 +1,12 @@
 ---
 - name: Ubuntu install
-  when: ansible_distribution == 'Ubuntu'
+  when: use_pkgs and ansible_distribution == 'Ubuntu'
   include: Ubuntu.yml
 
 - name: CentOS/Fedora install
-  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Fedora'
+  when: use_pkgs and (ansible_distribution == 'CentOS' or ansible_distribution == 'Fedora')
   include: CentOSFedora.yml
+
+- name: generics install
+  when: not use_pkgs
+  include: Generic.yml

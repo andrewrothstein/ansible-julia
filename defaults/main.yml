@@ -1,2 +1,8 @@
 ---
 epel_ver : 7
+
+use_pkgs : False
+julia_major_ver : '0.4'
+julia_minor_ver : '.1'
+julia_platform : 'linux-x86_64'
+julia_git_ver : 'cbe1bee3a8'

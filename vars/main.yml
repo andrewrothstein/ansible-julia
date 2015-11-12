@@ -4,3 +4,8 @@ fedora_repo_url : 'http://copr.fedoraproject.org/coprs/nalimilan/julia/repo/fedo
 
 centos_repo : 'nalimilan-julia-epel-{{epel_ver}}.repo'
 centos_repo_url : 'http://copr.fedoraproject.org/coprs/nalimilan/julia/repo/epel-{{epel_ver}}/{{centos_repo}}'
+
+julia_ver : '{{julia_major_ver}}{{julia_minor_ver}}'
+julia_name : 'julia-{{julia_ver}}'
+julia_tgz : '{{julia_name}}-{{julia_platform}}.tar.gz'
+julia_tgz_url : 'https://julialang.s3.amazonaws.com/bin/linux/x64/{{julia_major_ver}}/{{julia_tgz}}'
