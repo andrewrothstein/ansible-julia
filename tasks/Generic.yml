@@ -1,15 +1,11 @@
 ---
 - name: (Debian) julia dep pkgs
   when: ansible_os_family == 'Debian'
-  apt: name={{item}} state=latest
-  with_items:
-    - git
+  include: Generic-Debian-deps.yml
 
 - name: (RedHat) julia dep pkgs
   when: ansible_os_family == 'RedHat'
-  yum: name={{item}} state=latest
-  with_items:
-    - git
+  include: Generic-RedHat-deps.yml
     
 - name: download julia
   get_url: url={{julia_tgz_url}} dest='/tmp/{{julia_tgz}}'
