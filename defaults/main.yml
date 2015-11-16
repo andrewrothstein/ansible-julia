@@ -1,7 +1,7 @@
 ---
 epel_ver : 7
 
-use_pkgs : False
+use_pkgs : True
 julia_major_ver : '0.4'
 julia_minor_ver : '.1'
 julia_platform : 'linux-x86_64'
