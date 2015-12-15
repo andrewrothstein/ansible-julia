@@ -1,12 +1,25 @@
 ---
+
 - name: Ubuntu install
-  when: use_pkgs and ansible_distribution == 'Ubuntu'
+  when: >
+    not julia_build_src
+    and julia_use_pkgs
+    and ansible_distribution == 'Ubuntu'
   include: Ubuntu.yml
 
 - name: CentOS/Fedora install
-  when: use_pkgs and (ansible_distribution == 'CentOS' or ansible_distribution == 'Fedora')
+  when: >
+    not julia_build_src
+    and julia_use_pkgs
+    and (ansible_distribution == 'CentOS'
+    or ansible_distribution == 'Fedora')
   include: CentOSFedora.yml
 
 - name: generics install
-  when: not use_pkgs
+  when: not julia_build_src and not julia_use_pkgs
   include: Generic.yml
+
+- name: building from source...
+  when: julia_build_src
+  include: BuildFromSource.yml
+  

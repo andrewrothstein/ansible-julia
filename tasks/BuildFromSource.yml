@@ -1,0 +1,24 @@
+---
+- name: getting source...
+  git: >
+    repo={{julia_build_repo}}
+    dest={{julia_src_dir}}
+    version={{julia_build_branch}}
+    accept_hostkey=yes
+
+- name: build it....
+  command: make
+  args:
+    chdir: '{{julia_src_dir}}'
+    creates: '{{julia_src_dir}}/julia'
+
+- name: link /opt/julia
+  file: src=/opt/{{julia_src_dir}} dest=/opt/julia state=link
+
+- name: add /opt/julia to the default path
+  copy: >-
+    src=etc/profile.d/julia.sh
+    dest=/etc/profile.d/julia.sh
+    mode=644
+    owner=root
+    group=root

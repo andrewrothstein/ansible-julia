@@ -1,8 +1,12 @@
 ---
-epel_ver : 7
+julia_epel_ver : 7
 
-use_pkgs : True
+julia_use_pkgs : True
+
 julia_major_ver : '0.4'
-julia_minor_ver : '.1'
+julia_minor_ver : '.2'
 julia_platform : 'linux-x86_64'
-julia_git_ver : 'cbe1bee3a8'
+
+julia_build_src : False
+julia_build_repo : 'git://github.com/JuliaLang/julia.git'
+julia_build_branch : 'v{{julia_major_ver}}{{julia_minor_ver}}'
