@@ -11,3 +11,4 @@
     - libssl-dev
     - gfortran
     - m4
+    - cmake
