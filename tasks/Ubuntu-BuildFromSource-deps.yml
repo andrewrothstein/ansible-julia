@@ -2,6 +2,7 @@
 - name: (Ubuntu) installing dependent pkgs (see julia.git/.travis.yml)
   apt: name={{item}} state=latest
   with_items:
+    - curl
     - git
     - binutils
     - gcc
