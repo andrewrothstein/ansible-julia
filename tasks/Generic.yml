@@ -28,7 +28,7 @@
 
 - name: add /opt/julia to the default path
   copy: >-
-    src=etc/profile.d/julia.sh
+    src=etc/profile.d/julia-bin.sh
     dest=/etc/profile.d/julia.sh
     mode=644
     owner=root

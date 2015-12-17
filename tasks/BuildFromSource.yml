@@ -17,11 +17,11 @@
     creates: '{{julia_src_dir}}/julia'
 
 - name: link /opt/julia
-  file: src=/opt/{{julia_src_dir}} dest=/opt/julia state=link
+  file: src='{{julia_src_dir}}' dest=/opt/julia state=link
 
 - name: add /opt/julia to the default path
   copy: >-
-    src=etc/profile.d/julia.sh
+    src=etc/profile.d/julia-src.sh
     dest=/etc/profile.d/julia.sh
     mode=644
     owner=root
