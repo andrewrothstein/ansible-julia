@@ -12,3 +12,4 @@
     - gfortran
     - m4
     - cmake
+    - patch
