@@ -1,0 +1,14 @@
+---
+- name: (RedHat) installing dependent pkgs
+  yum: name={{item}} state=latest
+  with_items:
+    - curl
+    - git
+    - binutils
+    - gcc
+    - g++
+    - make
+    - openssl-devel
+    - gcc-gfortran
+    - m4
+    - cmake

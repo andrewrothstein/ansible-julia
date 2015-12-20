@@ -3,6 +3,10 @@
   when: ansible_distribution == 'Ubuntu'
   include: Ubuntu-BuildFromSource-deps.yml
 
+- name: (RedHat) build/vcs deps...
+  when: ansible_os_family == 'RedHat'
+  include: RedHat-BuildFromSource-deps.yml
+  
 - name: getting source...
   git: >
     repo={{julia_build_repo}}
