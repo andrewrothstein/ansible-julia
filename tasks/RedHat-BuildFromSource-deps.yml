@@ -6,7 +6,7 @@
     - git
     - binutils
     - gcc
-    - g++
+    - gcc-g++
     - make
     - openssl-devel
     - gcc-gfortran
