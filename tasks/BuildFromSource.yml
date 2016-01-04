@@ -18,14 +18,28 @@
   command: make
   args:
     chdir: '{{julia_src_dir}}'
-    creates: '{{julia_src_dir}}/julia'
 
+- name: clear out target...
+  command: rm -rf {{julia_bin_dir}}
+
+- name: install build...
+  command: mv {{julia_src_dir}}/usr {{julia_bin_dir}}
+
+- name: delete intermediate build artifacts
+  when: julia_build_cleanup
+  command: rm -rf {{julia_src_dir}}
+  
 - name: link /opt/julia
-  file: src='{{julia_src_dir}}' dest=/opt/julia state=link
+  file: >
+    src={{julia_bin_dir}}
+    dest=/opt/julia
+    state=link
+    owner=root
+    group=root
 
 - name: add /opt/julia to the default path
   copy: >-
-    src=etc/profile.d/julia-src.sh
+    src=etc/profile.d/julia.sh
     dest=/etc/profile.d/julia.sh
     mode=644
     owner=root

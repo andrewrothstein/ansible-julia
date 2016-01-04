@@ -11,3 +11,4 @@ julia_tgz : '{{julia_name}}-{{julia_platform}}.tar.gz'
 julia_tgz_url : 'https://julialang.s3.amazonaws.com/bin/linux/x64/{{julia_major_ver}}/{{julia_tgz}}'
 
 julia_src_dir : '/opt/julia-src-{{julia_build_branch}}'
+julia_bin_dir : '/opt/julia-build-{{julia_build_branch}}'
