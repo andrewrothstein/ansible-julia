@@ -18,3 +18,7 @@ julia_build_branch : 'v{{julia_major_ver}}{{julia_minor_ver}}'
 
 # delete all the build artifacts post install?
 julia_build_cleanup : False
+
+# Force a base arch for julia builds
+#julia_build_make_args : 'MARCH=x86-64'
+julia_build_make_args : ''
