@@ -15,7 +15,7 @@
     accept_hostkey=yes
 
 - name: build it....
-  command: make
+  command: make {{julia_build_make_args}}
   args:
     chdir: '{{julia_src_dir}}'
 
