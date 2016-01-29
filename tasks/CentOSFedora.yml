@@ -1,6 +1,6 @@
 ---
 - name: dependent packages
-  yum: name={{item}} state=latest
+  package: name={{item}} state=latest
   with_items:
     - curl
 
@@ -17,5 +17,5 @@
     dest='/etc/yum.repos.d/{{centos_repo}}'
 
 - name: install julia
-  yum: name=julia state=latest
+  package: name=julia state=latest
   
