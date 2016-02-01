@@ -1,8 +1,0 @@
----
-- name: julia dep pkgs
-  when: ansible_os_family == 'RedHat'
-  package: name={{item}} state=latest
-  with_items:
-    - git
-    - curl
-    - wget

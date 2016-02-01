@@ -1,24 +1,7 @@
 ---
 julia_epel_ver : 7
 
-julia_use_pkgs : True
-
 julia_major_ver : '0.4'
 julia_minor_ver : '.2'
 julia_platform : 'linux-x86_64'
 
-# build from source
-julia_build_src : False
-
-# git repo containing julia build
-julia_build_repo : 'git://github.com/JuliaLang/julia.git'
-
-# git branch containing julia to build
-julia_build_branch : 'v{{julia_major_ver}}{{julia_minor_ver}}'
-
-# delete all the build artifacts post install?
-julia_build_cleanup : False
-
-# Force a base arch for julia builds
-#julia_build_make_args : 'MARCH=x86-64'
-julia_build_make_args : ''

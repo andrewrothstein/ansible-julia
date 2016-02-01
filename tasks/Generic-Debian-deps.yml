@@ -1,7 +1,0 @@
----
-- name: julia dep pkgs
-  package: name={{item}} state=latest
-  with_items:
-    - git
-    - curl
-    - wget
