@@ -1,6 +1,6 @@
 ---
 - name: dependent packages
-  package: name={{item}} state=latest
+  package: name={{item}} state=present
   with_items:
     - python-apt
     - curl
@@ -12,5 +12,5 @@
     - ppa:staticfloat/julia-deps
   
 - name: install julia
-  package: name=julia state=latest
+  package: name=julia state=present
   
