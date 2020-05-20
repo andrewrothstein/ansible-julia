@@ -1,9 +1,51 @@
 ---
-
-- name: (Ubuntu) install
-  when: ansible_distribution == 'Ubuntu'
-  include: Ubuntu.yml
-
-- name: (RedHat) install
-  when: ansible_os_family == 'RedHat'
-  include: CentOSFedora.yml
+- name: resolve platform specific vars
+  include_vars: '{{ item }}'
+  with_first_found:
+    - files:
+        - '{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
+        - '{{ ansible_distribution }}.yml'
+        - '{{ ansible_os_family }}.yml'
+      skip: true
+      paths:
+        - '{{ role_path }}/vars'
+- name: check for installation...
+  become: yes
+  stat:
+    path: '{{ julia_install_dir }}'
+  changed_when: False
+  register: julia_binary
+- when: not julia_binary.stat.exists
+  block:
+    - name: download...
+      become: yes
+      become_user: root
+      get_url:
+        url: '{{ julia_url }}'
+        dest: /tmp/{{ julia_tgz }}
+        checksum: '{{ julia_checksum }}'
+        mode: 0644
+    - name: unarchive...
+      become: yes
+      become_user: root
+      unarchive:
+        remote_src: yes
+        src: /tmp/{{ julia_tgz }}
+        dest: '{{ julia_parent_install_dir }}'
+        creates: '{{ julia_install_dir }}'
+  always:
+    - name: cleanup
+      become: yes
+      become_user: root
+      file:
+        path: /tmp/{{ julia_tgz }}
+        state: absent
+- name: link...
+  become: yes
+  become_user: root
+  with_items:
+    - julia
+  file:
+    src: '{{ julia_install_dir }}/bin/{{ item }}'
+    dest: '{{ julia_parent_install_dir }}/bin/{{ item }}'
+    state: link

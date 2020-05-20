@@ -1,6 +1,8 @@
 ---
-fedora_repo : 'nalimilan-julia-fedora-{{ansible_distribution_major_version|int}}.repo'
-fedora_repo_url : 'http://copr.fedoraproject.org/coprs/nalimilan/julia/repo/fedora-{{ansible_distribution_major_version|int}}/{{fedora_repo}}'
-
-centos_repo : 'nalimilan-julia-epel-{{julia_epel_ver}}.repo'
-centos_repo_url : 'http://copr.fedoraproject.org/coprs/nalimilan/julia/repo/epel-{{julia_epel_ver}}/{{centos_repo}}'
+julia_platform: '{{ julia_os }}-{{ julia_arch.rarch }}'
+julia_fq_ver: '{{ julia_ver.major }}.{{ julia_ver.minor }}.{{ julia_ver.patch }}'
+julia_name: julia-{{ julia_fq_ver }}
+julia_tgz: '{{ julia_name }}-{{ julia_platform }}.tar.gz'
+julia_url: '{{ julia_mirror }}/{{ julia_os }}/{{ julia_arch.larch }}/{{ julia_ver.major }}.{{ julia_ver.minor }}/{{ julia_tgz }}'
+julia_checksum: '{{ julia_checksums[julia_fq_ver][julia_platform] }}'
+julia_install_dir: '{{ julia_parent_install_dir }}/{{ julia_name }}'
