@@ -1,4 +1,8 @@
 ---
+- include_role:
+    name: andrewrothstein.unarchive-deps
+- include_role:
+    name: andrewrothstein.alpine-glibc-shim
 - name: resolve platform specific vars
   include_vars: '{{ item }}'
   with_first_found:
@@ -9,39 +13,39 @@
       skip: true
       paths:
         - '{{ role_path }}/vars'
-- name: check for installation...
-  become: yes
+- name: check for installation in {{ julia_install_dir }}
+  become: true
   stat:
     path: '{{ julia_install_dir }}'
-  changed_when: False
+  changed_when: false
   register: julia_binary
 - when: not julia_binary.stat.exists
   block:
-    - name: download...
-      become: yes
+    - name: downloading {{ julia_url }}
+      become: true
       become_user: root
       get_url:
         url: '{{ julia_url }}'
-        dest: /tmp/{{ julia_tgz }}
+        dest: '{{ julia_tmp_tgz }}'
         checksum: '{{ julia_checksum }}'
         mode: 0644
-    - name: unarchive...
-      become: yes
+    - name: unarchiving {{ julia_tmp_tgz }}
+      become: true
       become_user: root
       unarchive:
-        remote_src: yes
-        src: /tmp/{{ julia_tgz }}
+        remote_src: true
+        src: '{{ julia_tmp_tgz }}'
         dest: '{{ julia_parent_install_dir }}'
         creates: '{{ julia_install_dir }}'
   always:
-    - name: cleanup
-      become: yes
+    - name: rm {{ julia_tmp_tgz }}
+      become: true
       become_user: root
       file:
-        path: /tmp/{{ julia_tgz }}
+        path: '{{ julia_tmp_tgz }}'
         state: absent
-- name: link...
-  become: yes
+- name: linking executables in {{ julia_install_dir }}/bin to {{ julia_parent_install_dir }}/bin
+  become: true
   become_user: root
   with_items:
     - julia

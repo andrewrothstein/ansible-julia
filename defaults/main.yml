@@ -1,26 +1,43 @@
 ---
 julia_ver:
   major: 1
-  minor: 4
-  patch: 1
+  minor: 9
+  patch: 0
 
 julia_os: linux
-julia_arch:
-  larch: x64
-  rarch: x86_64
+julia_arch_map:
+  aarch64: aarch64
+  ppc64le: ppc64le
+  i686: x86
+  x86_64: x64
 
 julia_parent_install_dir: /usr/local
 
 julia_mirror: https://julialang-s3.julialang.org/bin
 julia_checksums:
-  '1.4.1':
-    # https://julialang-s3.julialang.org/bin/linux/x64/1.4/julia-1.4.1-linux-x86_64.tar.gz
-    linux-x86_64: sha256:fd6d8cadaed678174c3caefb92207a3b0e8da9f926af6703fb4d1e4e4f50610a
-    # https://julialang-s3.julialang.org/bin/linux/x86/1.4/julia-1.4.1-linux-i686.tar.gz
-    linux-i686: sha256:765e614b2754b20d50bae475dd9f3b794f445915084afa42523fd1b14e4c91fe
-    # https://julialang-s3.julialang.org/bin/linux/armv7l/1.4/julia-1.4.1-linux-armv7l.tar.gz
-    linux-armv7l: sha256:bdcf24e0365f16092838daf7059bf5c0036bff9dc418511010e79249d9f71e96
-    # https://julialang-s3.julialang.org/bin/linux/aarch64/1.4/julia-1.4.1-linux-aarch64.tar.gz
-    linux-aarch64: sha256:788dc1e79344b52f65358ce4406dc5304bafd82c6af50bfa92a6ee5ea998e678
-    # https://julialang-s3.julialang.org/bin/freebsd/x64/1.4/julia-1.4.1-freebsd-x86_64.tar.gz
-    freebsd-x86_64: sha256:f7a6545953f8843201acec16ea66ba0d0ced8145439b6cebfcb893e9671cf7af
+  '1.8.5':
+    # https://julialang-s3.julialang.org/bin/musl/x64/1.8/julia-1.8.5-musl-x86_64.tar.gz
+    musl-x86_64: sha256:12427c0336648b59f0c853b9885e2ffcd113e876d4b385b9cf59bc0e581987fc
+    # https://julialang-s3.julialang.org/bin/linux/x64/1.8/julia-1.8.5-linux-x86_64.tar.gz
+    linux-x86_64: sha256:e71a24816e8fe9d5f4807664cbbb42738f5aa9fe05397d35c81d4c5d649b9d05
+    # https://julialang-s3.julialang.org/bin/linux/x86/1.8/julia-1.8.5-linux-i686.tar.gz
+    linux-i686: sha256:f0edd61970710333cb5ac6491fbbc859436e5e9e84b014ae04f291bddf6a7e21
+    # https://julialang-s3.julialang.org/bin/linux/ppc64le/1.8/julia-1.8.5-linux-ppc64le.tar.gz
+    linux-ppc64le: sha256:13c121362e73cda8049a9b51b15c6d0d1dc66803db45ab1d5c46ea9c1b7440df
+    # https://julialang-s3.julialang.org/bin/linux/aarch64/1.8/julia-1.8.5-linux-aarch64.tar.gz
+    linux-aarch64: sha256:a1f637b44c71ea9bc96d7c3ef347724c054a1e5227b980adebfc33599e5153a4
+    # https://julialang-s3.julialang.org/bin/freebsd/x64/1.8/julia-1.8.5-freebsd-x86_64.tar.gz
+    freebsd-x86_64: sha256:fc0a6e84e6ea5b41094d3e0b7ee06431b06a6ae8bcd6a1a3a2b1e0030b418498
+  '1.9.0':
+    # https://julialang-s3.julialang.org/bin/musl/x64/1.9/julia-1.9.0-musl-x86_64.tar.gz
+    musl-x86_64: sha256:2594ff9a69d86415faae2e2e218ec3a5abbeb41ab3590b646b75824221adcb5b
+    # https://julialang-s3.julialang.org/bin/linux/x64/1.9/julia-1.9.0-linux-x86_64.tar.gz
+    linux-x86_64: sha256:00c614466ef9809c2eb23480e38d196a2c577fff2730c4f83d135b913d473359
+    # https://julialang-s3.julialang.org/bin/linux/x86/1.9/julia-1.9.0-linux-i686.tar.gz
+    linux-i686: sha256:add391830b50df8d84f11ecf9e0fdd3d0fd420ba08737640094696fde64a22be
+    # https://julialang-s3.julialang.org/bin/linux/ppc64le/1.9/julia-1.9.0-linux-ppc64le.tar.gz
+    linux-ppc64le: sha256:f32197fdd7b8e34d26d91cc46fc2fa040e07b02e61d22c0cedbc5e7e3d0363d5
+    # https://julialang-s3.julialang.org/bin/linux/aarch64/1.9/julia-1.9.0-linux-aarch64.tar.gz
+    linux-aarch64: sha256:0a14315b53acd97f22d26d4a8fd2c237e524e95c3bec98d2d78b54d80c2bc364
+    # https://julialang-s3.julialang.org/bin/freebsd/x64/1.9/julia-1.9.0-freebsd-x86_64.tar.gz
+    freebsd-x86_64: sha256:81bea31cf4742ba2742f898888714d386521f21e46416a4da4153de486251c64

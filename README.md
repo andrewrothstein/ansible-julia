@@ -1,8 +1,8 @@
-andrewrothstein.rolename
+andrewrothstein.julia
 =========
-[![Build Status](https://travis-ci.org/andrewrothstein/ansible-rolename.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-rolename)
+![Build Status](https://github.com/andrewrothstein/ansible-julia/actions/workflows/build.yml/badge.svg)
 
-A brief description of the andrewrothstein.rolename goes here.
+Installs [julia](https://julialang.org/).
 
 Requirements
 ------------
@@ -25,7 +25,7 @@ Example Playbook
 ```yml
 - hosts: servers
   roles:
-    - andrewrothstein.rolename
+    - andrewrothstein.julia
 ```
 
 License

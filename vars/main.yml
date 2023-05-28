@@ -1,8 +1,11 @@
 ---
-julia_platform: '{{ julia_os }}-{{ julia_arch.rarch }}'
+julia_larch: '{{ julia_arch_map[ansible_architecture] }}'
+
+julia_platform: '{{ julia_os }}-{{ ansible_architecture }}'
 julia_fq_ver: '{{ julia_ver.major }}.{{ julia_ver.minor }}.{{ julia_ver.patch }}'
 julia_name: julia-{{ julia_fq_ver }}
 julia_tgz: '{{ julia_name }}-{{ julia_platform }}.tar.gz'
-julia_url: '{{ julia_mirror }}/{{ julia_os }}/{{ julia_arch.larch }}/{{ julia_ver.major }}.{{ julia_ver.minor }}/{{ julia_tgz }}'
+julia_tmp_tgz: '{{ julia_tmp_dir | default("/tmp") }}/{{ julia_tgz }}'
+julia_url: '{{ julia_mirror }}/{{ julia_os }}/{{ julia_larch }}/{{ julia_ver.major }}.{{ julia_ver.minor }}/{{ julia_tgz }}'
 julia_checksum: '{{ julia_checksums[julia_fq_ver][julia_platform] }}'
 julia_install_dir: '{{ julia_parent_install_dir }}/{{ julia_name }}'
