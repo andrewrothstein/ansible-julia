@@ -31,7 +31,7 @@ jobs:
         - alpine_3.18
         - alpine_edge
         - archlinux_latest
-        - debian_bookwork
+        - debian_buster
         - debian_bullseye
         - fedora_36
         - fedora_37
