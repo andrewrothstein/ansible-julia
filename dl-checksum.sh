@@ -42,5 +42,4 @@ dl_ver () {
     dl $major_ver $minor_ver $patch_ver freebsd x64 x86_64
 }
 
-dl_ver 1 8 5
-dl_ver 1 9 0
+dl_ver 1 9 1
