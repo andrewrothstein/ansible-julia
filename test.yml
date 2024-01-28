@@ -1,9 +1,13 @@
 ---
-- hosts: all
+- name: Testing andrewrothstein.julia
+  hosts: all
   roles:
-  - role: '{{ playbook_dir }}'
+    - role: '{{ playbook_dir }}'
   tasks:
-    - command: /usr/local/bin/julia --version
+    - name: Executing 'julia --version'
+      ansible.builtin.command: /usr/local/bin/julia --version
+      changed_when: false
       register: julia_test_output
-    - debug:
+    - name: Output from 'julia --version'
+      ansible.builtin.debug:
         msg: '{{ julia_test_output.stdout }}'

@@ -1,8 +1,9 @@
 ---
-- include_role:
-    name: andrewrothstein.unarchive-deps
-- name: resolve platform specific vars
-  include_vars: '{{ item }}'
+- name: Installing andrewrothstein.unarchivedeps
+  ansible.builtin.include_role:
+    name: andrewrothstein.unarchivedeps
+- name: Resolve platform specific vars
+  ansible.builtin.include_vars: '{{ item }}'
   with_first_found:
     - files:
         - '{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
@@ -11,43 +12,44 @@
       skip: true
       paths:
         - '{{ role_path }}/vars'
-- name: check for installation in {{ julia_install_dir }}
+- name: Check for installation in {{ julia_install_dir }}
   become: true
-  stat:
+  ansible.builtin.stat:
     path: '{{ julia_install_dir }}'
   changed_when: false
   register: julia_binary
-- when: not julia_binary.stat.exists
+- name: Downloading and installing julia
+  when: not julia_binary.stat.exists
   block:
-    - name: downloading {{ julia_url }}
+    - name: Downloading {{ julia_url }}
       become: true
       become_user: root
-      get_url:
+      ansible.builtin.get_url:
         url: '{{ julia_url }}'
         dest: '{{ julia_tmp_tgz }}'
         checksum: '{{ julia_checksum }}'
-        mode: 0644
-    - name: unarchiving {{ julia_tmp_tgz }}
+        mode: '644'
+    - name: Unarchiving {{ julia_tmp_tgz }}
       become: true
       become_user: root
-      unarchive:
+      ansible.builtin.unarchive:
         remote_src: true
         src: '{{ julia_tmp_tgz }}'
         dest: '{{ julia_parent_install_dir }}'
         creates: '{{ julia_install_dir }}'
   always:
-    - name: rm {{ julia_tmp_tgz }}
+    - name: Rm {{ julia_tmp_tgz }}
       become: true
       become_user: root
-      file:
+      ansible.builtin.file:
         path: '{{ julia_tmp_tgz }}'
         state: absent
-- name: linking executables in {{ julia_install_dir }}/bin to {{ julia_parent_install_dir }}/bin
+- name: Linking executables in {{ julia_install_dir }}/bin to {{ julia_parent_install_dir }}/bin
   become: true
   become_user: root
   with_items:
     - julia
-  file:
+  ansible.builtin.file:
     src: '{{ julia_install_dir }}/bin/{{ item }}'
     dest: '{{ julia_parent_install_dir }}/bin/{{ item }}'
     state: link
