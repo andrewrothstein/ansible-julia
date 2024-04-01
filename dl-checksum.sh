@@ -37,9 +37,8 @@ dl_ver () {
     dl $major_ver $minor_ver $patch_ver musl x64 x86_64
     dl $major_ver $minor_ver $patch_ver linux x64 x86_64
     dl $major_ver $minor_ver $patch_ver linux x86 i686
-    dl $major_ver $minor_ver $patch_ver linux ppc64le ppc64le
     dl $major_ver $minor_ver $patch_ver linux aarch64 aarch64
     dl $major_ver $minor_ver $patch_ver freebsd x64 x86_64
 }
 
-dl_ver 1 10 0
+dl_ver 1 10 2
