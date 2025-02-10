@@ -34,11 +34,11 @@ dl_ver () {
     local patch_ver=$3
 
     printf "  '%s.%s.%s':\n" $major_ver $minor_ver $patch_ver
-    dl $major_ver $minor_ver $patch_ver musl x64 x86_64
+#    dl $major_ver $minor_ver $patch_ver musl x64 x86_64
     dl $major_ver $minor_ver $patch_ver linux x64 x86_64
     dl $major_ver $minor_ver $patch_ver linux x86 i686
     dl $major_ver $minor_ver $patch_ver linux aarch64 aarch64
     dl $major_ver $minor_ver $patch_ver freebsd x64 x86_64
 }
 
-dl_ver 1 10 2
+dl_ver 1 11 3
