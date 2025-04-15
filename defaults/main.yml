@@ -2,7 +2,7 @@
 julia_ver:
   major: 1
   minor: 11
-  patch: 3
+  patch: 4
 
 julia_os: linux
 julia_arch_map:
@@ -87,3 +87,12 @@ julia_checksums:
     linux-aarch64: sha256:0c1f2f60c3ecc37ae0c559db325dc64858fb11d6729b25d63f23e5285f7906ef
     # https://julialang-s3.julialang.org/bin/freebsd/x64/1.11/julia-1.11.3-freebsd-x86_64.tar.gz
     freebsd-x86_64: sha256:c6aa3270ac480c318b17b708e63e113560ab666657d6d72a758f4d3a90872cf6
+  '1.11.4':
+    # https://julialang-s3.julialang.org/bin/linux/x64/1.11/julia-1.11.4-linux-x86_64.tar.gz
+    linux-x86_64: sha256:fb3d3c5fccef82158a70677c0044ac5ae40410eceb0604cdc8e643eeff21df8d
+    # https://julialang-s3.julialang.org/bin/linux/x86/1.11/julia-1.11.4-linux-i686.tar.gz
+    linux-i686: sha256:0da3178ee5dacc1473e45c8c74838455252831f5d37483d716995742d3187e30
+    # https://julialang-s3.julialang.org/bin/linux/aarch64/1.11/julia-1.11.4-linux-aarch64.tar.gz
+    linux-aarch64: sha256:859f1a8cc4bce6911bc912f0e226a6ba2b1c144110b9d559d88f5077513d0e37
+    # https://julialang-s3.julialang.org/bin/freebsd/x64/1.11/julia-1.11.4-freebsd-x86_64.tar.gz
+    freebsd-x86_64: sha256:27d0c6a51bb0371be404af1f9ced70d6855f59bedddcb36a6344ae66a35861b3
